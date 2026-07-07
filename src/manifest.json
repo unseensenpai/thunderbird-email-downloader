@@ -7,7 +7,8 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "email-html-export@guralporselen.com.tr",
-      "strict_min_version": "128.0"
+      "strict_min_version": "128.0",
+      "strict_max_version": "153.*"
     }
   },
   "background": {

@@ -1097,7 +1097,7 @@ git commit -m "feat: add background orchestration for email export"
 
 - [ ] **Step 1: Add placeholder icons**
 
-Create three small PNG placeholder icons at `icons/export-16.png`, `icons/export-32.png`, `icons/export-64.png` (any simple PNG; can be a solid-color square). If ImageMagick is available:
+Create three small PNG placeholder icons at `src/icons/export-16.png`, `src/icons/export-32.png`, `src/icons/export-64.png` (any simple PNG; can be a solid-color square). Note: icons must live under `src/` because `web-ext` uses `--source-dir=src`; the manifest references them as `icons/export-*.png` relative to `src/`. If ImageMagick is available:
 
 Run:
 ```bash

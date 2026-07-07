@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Email HTML Export",
+  "version": "0.1.1",
+  "description": "Export selected emails to a chosen folder as HTML with attachments.",
+  "author": "Selman Gülmez",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "email-html-export@guralporselen.com.tr",
+      "strict_min_version": "128.0",
+      "strict_max_version": "153.*"
+    }
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "type": "module"
+  },
+  "permissions": [
+    "menus",
+    "messagesRead",
+    "notifications"
+  ],
+  "icons": {
+    "16": "icons/export-16.png",
+    "32": "icons/export-32.png",
+    "64": "icons/export-64.png"
+  },
+  "experiment_apis": {
+    "FileExport": {
+      "schema": "api/FileExport/schema.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["FileExport"]],
+        "script": "api/FileExport/implementation.js"
+      }
+    }
+  }
+}

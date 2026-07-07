@@ -1,0 +1,55 @@
+[
+  {
+    "namespace": "FileExport",
+    "functions": [
+      {
+        "name": "pickFolder",
+        "type": "function",
+        "async": true,
+        "description": "Open a native folder chooser. Returns absolute path or null if cancelled.",
+        "parameters": [
+          { "name": "title", "type": "string", "description": "Dialog title" }
+        ]
+      },
+      {
+        "name": "makeDir",
+        "type": "function",
+        "async": true,
+        "description": "Create a directory (and parents) if missing.",
+        "parameters": [
+          { "name": "absolutePath", "type": "string", "description": "Absolute directory path" }
+        ]
+      },
+      {
+        "name": "writeText",
+        "type": "function",
+        "async": true,
+        "description": "Write a UTF-8 text file.",
+        "parameters": [
+          { "name": "absolutePath", "type": "string", "description": "Absolute file path" },
+          { "name": "text", "type": "string", "description": "UTF-8 content" }
+        ]
+      },
+      {
+        "name": "writeBytes",
+        "type": "function",
+        "async": true,
+        "description": "Write a binary file from an array of byte values.",
+        "parameters": [
+          { "name": "absolutePath", "type": "string", "description": "Absolute file path" },
+          { "name": "byteArray", "type": "array", "items": { "type": "integer" }, "description": "Byte values 0-255" }
+        ]
+      },
+      {
+        "name": "joinPath",
+        "type": "function",
+        "async": true,
+        "description": "Join path segments in an OS-correct way.",
+        "parameters": [
+          { "name": "base", "type": "string", "description": "Base absolute path" },
+          { "name": "segments", "type": "array", "items": { "type": "string" }, "description": "Path segments to append" }
+        ]
+      }
+    ]
+  }
+]

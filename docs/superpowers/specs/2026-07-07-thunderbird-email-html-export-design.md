@@ -87,11 +87,23 @@ Kullanıcının seçtiği klasör `<hedef>`:
 - Inline `cid:` görseller de birer ek gibi işlenir: `attachments/` altına GUIDv7 ile yazılır, body'deki `cid:` referansı `attachments/<guidv7>.<uzantı>` relative yoluna çevrilir.
 - GUIDv7 kullanıldığı için dosya adı çakışması pratikte olmaz.
 
-### 4.3 Ek türü filtresi
+### 4.3 Ek türü filtresi ve uzantı çözümleme
 
-- **Atlanan türler:** arşivler (`zip`, `rar`, `7z`, `tar`, `gz`) ve çalıştırılabilirler / script'ler (`exe`, `msi`, `bat`, `cmd`, `com`, `scr`, `dll`, `js`, `vbs`).
-- **Export edilen türler:** yukarıdakiler dışındaki her şey (görseller, PDF, Office/ODF dokümanları, metin/veri dosyaları vb.).
-- Atlanan ekler HTML'in ek listesinde "export edilmedi (tür desteklenmiyor)" notuyla gösterilir, link verilmez.
+Filtre kararı ve kaydedilecek uzantı, dosya adının uzantısına **ve** MIME
+`contentType` bilgisine göre birlikte verilir:
+
+- **Uzantısı olan ekler:** Uzantı bir engellenen türse atlanır; değilse export
+  edilir ve **orijinal uzantı korunur**.
+  - **Engellenen türler:** arşivler (`zip`, `rar`, `7z`, `tar`, `gz`) ve
+    çalıştırılabilirler / script'ler (`exe`, `msi`, `bat`, `cmd`, `com`, `scr`,
+    `dll`, `js`, `vbs`).
+- **Uzantısı OLMAYAN ekler (örn. `ScreenCapture`):** image gibi değerlendirilir.
+  MIME tipi tanınan bir image ise (`image/png`→`png`, `image/jpeg`→`jpg`,
+  `image/gif`, `image/webp`, `image/bmp`, `image/tiff`, `image/heic`,
+  `image/heif`, `image/svg+xml`) → export edilir ve dosya `<uuid>.<img-uzantı>`
+  olarak kaydedilir. MIME'den bir image uzantısı türetilemezse → **atlanır**.
+- Atlanan ekler HTML'in ek listesinde "export edilmedi (tür desteklenmiyor)"
+  notuyla gösterilir, link verilmez.
 
 ## 5. HTML çıktısı
 

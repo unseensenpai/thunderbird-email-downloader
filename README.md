@@ -82,15 +82,24 @@ npx web-ext run --source-dir=src \
 üretilir:
 
 ```bash
-node scripts/generate-icons.mjs   # src/icons/export-{16,32,64}.png
+npm run icons   # src/icons/export-{16,32,64}.png
 ```
 
 ## Paketleme ve yayınlama (ATN)
 
+Yüklenmeye hazır `.xpi` üretmek için tek komut:
+
 ```bash
-npm run build
-# üretilen .zip'i .xpi olarak kopyala (ATN .xpi kabul eder)
+npm run build:xpi
 ```
+
+Bu, `web-ext build` ile `web-ext-artifacts/email_html_export-<sürüm>.zip`
+üretir ve aynı içeriği `.xpi` olarak kopyalar (ATN `.zip` ve `.xpi` kabul eder;
+Thunderbird için `.xpi` yaygın olandır). Sadece `.zip` isterseniz `npm run build`
+yeterlidir.
+
+> Sürüm numarasını değiştirmek için hem `src/manifest.json` hem `package.json`
+> içindeki `version` alanını güncelleyin (ATN aynı sürümü iki kez kabul etmez).
 
 Yayınlama adımları ve mağaza listeleme metni: [docs/STORE_LISTING.md](docs/STORE_LISTING.md).
 

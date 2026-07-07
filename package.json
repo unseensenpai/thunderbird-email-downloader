@@ -1,6 +1,6 @@
 {
   "name": "thunderbird-email-html-export",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Export selected Thunderbird emails to a chosen folder as HTML with attachments.",
   "type": "module",
   "private": true,
@@ -8,8 +8,10 @@
   "author": "Selman Gülmez",
   "scripts": {
     "test": "node --test",
+    "icons": "node scripts/generate-icons.mjs",
     "run:tb": "web-ext run --source-dir=src --verbose",
-    "build": "web-ext build --source-dir=src --artifacts-dir=web-ext-artifacts --overwrite-dest"
+    "build": "web-ext build --source-dir=src --artifacts-dir=web-ext-artifacts --overwrite-dest",
+    "build:xpi": "npm run build && node scripts/zip-to-xpi.mjs"
   },
   "devDependencies": {
     "web-ext": "^8.3.0"

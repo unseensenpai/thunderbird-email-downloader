@@ -1,6 +1,6 @@
 {
   "name": "thunderbird-email-html-export",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Export selected Thunderbird emails to a chosen folder as HTML with attachments.",
   "type": "module",
   "private": true,
